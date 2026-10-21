@@ -32,8 +32,70 @@ import streamlit.components.v1 as components
 # SETUP
 # =========================================================
 
+
 load_dotenv(override=True)
+
+
+def bootstrap_admin_from_secrets():
+    """Pulihkan akun admin melalui Streamlit Secrets."""
+    try:
+        username = st.secrets["APP_USERNAME"]
+        password = st.secrets["APP_PASSWORD"]
+    except Exception:
+        # Secrets belum tersedia; jangan ubah akun.
+        return
+
+    if not username or not password:
+        return
+
+    reset_enabled = str(
+        st.secrets.get("ADMIN_RESET_PASSWORD", "false")
+    ).lower() == "true"
+
+    conn = get_connection()
+
+    try:
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT id FROM users WHERE username = ? LIMIT 1",
+            (username,)
+        )
+        user = cursor.fetchone()
+
+        if user is None:
+            password_hash = bcrypt.hashpw(
+                password.encode("utf-8"),
+                bcrypt.gensalt()
+            ).decode("utf-8")
+
+            cursor.execute(
+                """
+                INSERT INTO users
+                    (username, password, role, created_at)
+                VALUES (?, ?, 'admin', datetime('now'))
+                """,
+                (username, password_hash)
+            )
+            conn.commit()
+
+        elif reset_enabled:
+            password_hash = bcrypt.hashpw(
+                password.encode("utf-8"),
+                bcrypt.gensalt()
+            ).decode("utf-8")
+
+            cursor.execute(
+                "UPDATE users SET password = ? WHERE username = ?",
+                (password_hash, username)
+            )
+            conn.commit()
+
+    finally:
+        conn.close()
+
+
 create_tables()
+bootstrap_admin_from_secrets()
 
 
 st.set_page_config(
