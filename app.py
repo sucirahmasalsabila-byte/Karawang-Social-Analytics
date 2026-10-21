@@ -8,7 +8,7 @@ import plotly.express as px
 import streamlit as st
 from dotenv import load_dotenv
 
-from database import get_connection, create_tables
+from database_backup import get_connection, create_tables
 from topic_classifier import (
     TOPIC_LIST,
     classify_topic,
@@ -1862,6 +1862,7 @@ def comment_quality_score(text):
 @st.cache_data(ttl=30)
 def load_posts():
     conn = None
+
     try:
         conn = get_connection()
         cursor = conn.cursor()
@@ -1872,7 +1873,22 @@ def load_posts():
             return pd.DataFrame()
 
         columns = [col[0] for col in cursor.description]
-        return pd.DataFrame(rows, columns=columns)
+        df = pd.DataFrame(rows, columns=columns)
+
+        if "tanggal" in df.columns:
+            df["tanggal"] = pd.to_datetime(
+                df["tanggal"],
+                format="mixed",
+                errors="coerce",
+                utc=True,
+            ).dt.tz_localize(None)
+
+            df.loc[
+                df["tanggal"] < pd.Timestamp("2020-01-01"),
+                "tanggal"
+            ] = pd.NaT
+
+        return df
 
     except Exception as e:
         print(f"ERROR load_posts: {type(e).__name__}: {e}")
@@ -1882,60 +1898,6 @@ def load_posts():
         if conn is not None:
             conn.close()
 
-    if not df.empty:
-
-        df["tanggal"] = pd.to_datetime(
-            df["tanggal"],
-            format="mixed",
-            errors="coerce",
-            utc=True
-        )
-
-        df["tanggal"] = (
-            df["tanggal"]
-            .dt.tz_convert(None)
-        )
-
-        # Hapus tanggal tidak masuk akal seperti 1970
-        df.loc[
-            df["tanggal"].dt.year < 2020,
-            "tanggal"
-        ] = pd.NaT
-
-        required_columns = [
-            "post_id",
-            "platform",
-            "caption",
-            "tanggal",
-            "sentiment",
-            "topic",
-            "url",
-            "hashtag",
-            "likes",
-            "comments_count",
-            "views",
-            "shares"
-        ]
-
-        for column in required_columns:
-
-            if column not in df.columns:
-
-                if column in [
-                    "likes",
-                    "comments_count",
-                    "views",
-                    "shares"
-                ]:
-
-                    df[column] = 0
-
-                else:
-
-                    df[column] = ""
-
-    return df
-
 
 # =========================================================
 # LOAD COMMENTS
@@ -1944,6 +1906,7 @@ def load_posts():
 @st.cache_data(ttl=30)
 def load_comments():
     conn = None
+
     try:
         conn = get_connection()
         cursor = conn.cursor()
@@ -1954,7 +1917,22 @@ def load_comments():
             return pd.DataFrame()
 
         columns = [col[0] for col in cursor.description]
-        return pd.DataFrame(rows, columns=columns)
+        df = pd.DataFrame(rows, columns=columns)
+
+        if "tanggal" in df.columns:
+            df["tanggal"] = pd.to_datetime(
+                df["tanggal"],
+                format="mixed",
+                errors="coerce",
+                utc=True,
+            ).dt.tz_localize(None)
+
+            df.loc[
+                df["tanggal"] < pd.Timestamp("2020-01-01"),
+                "tanggal"
+            ] = pd.NaT
+
+        return df
 
     except Exception as e:
         print(f"ERROR load_comments: {type(e).__name__}: {e}")
@@ -1963,55 +1941,6 @@ def load_comments():
     finally:
         if conn is not None:
             conn.close()
-
-
-    if not df.empty:
-
-        df["tanggal"] = pd.to_datetime(
-            df["tanggal"],
-            format="mixed",
-            errors="coerce",
-            utc=True
-        )
-
-        df["tanggal"] = (
-            df["tanggal"]
-            .dt.tz_convert(None)
-        )
-
-        # Hapus tanggal tidak masuk akal seperti 1970
-        df.loc[
-            df["tanggal"].dt.year < 2020,
-            "tanggal"
-        ] = pd.NaT
-
-        required_columns = [
-            "comment_id",
-            "post_id",
-            "platform",
-            "text",
-            "tanggal",
-            "sentiment",
-            "topic",
-            "username",
-            "likes",
-            "url"
-        ]
-
-        for column in required_columns:
-
-            if column not in df.columns:
-
-                if column == "likes":
-
-                    df[column] = 0
-
-                else:
-
-                    df[column] = ""
-
-    return df
-
 
 # =========================================================
 # AMBIL DATA
@@ -2063,7 +1992,6 @@ if not comments.empty:
 
 post_url_map = {}
 post_caption_map = {}
-
 
 if not posts.empty:
 
@@ -3706,54 +3634,51 @@ with st.sidebar:
         not data_periode.empty
         and data_periode["tanggal"].notna().any()
     ):
+        
+        # Pastikan tanggal valid sebelum menentukan periode
+        tanggal_valid = pd.to_datetime(
+            data_periode["tanggal"],
+            errors="coerce",
+            utc=True
+        ).dropna()
 
-        tanggal_min = (
-            data_periode["tanggal"]
-            .min()
-            .date()
-        )
+        if not tanggal_valid.empty:
+            tanggal_min = tanggal_valid.min().date()
+            tanggal_max = tanggal_valid.max().date()
 
-        tanggal_max = (
-            data_periode["tanggal"]
-            .max()
-            .date()
-        )
-
-        periode = st.date_input(
-            "Periode",
-            value=(
-                tanggal_min,
-                tanggal_max
-            ),
-            min_value=tanggal_min,
-            max_value=datetime(
-                datetime.now().year + 1,
-                12,
-                31
+            periode = st.date_input(
+                "Periode",
+                value=(tanggal_min, tanggal_max),
+                min_value=tanggal_min,
+                max_value=datetime(
+                    datetime.now().year + 1,
+                    12,
+                    31
                 ).date(),
                 key=f"periode_{platform_aktif}"
-        )
-
-        if (
-            isinstance(
-                periode,
-                (tuple, list)
             )
-            and len(periode) == 2
-        ):
 
-            tanggal_mulai = periode[0]
-            tanggal_selesai = periode[1]
+            if (
+                isinstance(periode, (tuple, list))
+                and len(periode) == 2
+            ):
+                tanggal_mulai = periode[0]
+                tanggal_selesai = periode[1]
+            else:
+                tanggal_mulai = tanggal_min
+                tanggal_selesai = tanggal_max
 
         else:
-
-            tanggal_mulai = tanggal_min
-            tanggal_selesai = tanggal_max
+            st.warning(
+                "Tidak ada tanggal valid pada data untuk periode ini."
+            )
+            tanggal_mulai = None
+            tanggal_selesai = None
 
     else:
-
         tanggal_mulai = None
         tanggal_selesai = None
+
 
     # =====================================================
     # LOGOUT
