@@ -171,23 +171,6 @@ background_login = get_image_base64(
 )
 
 # =========================================================
-# DEBUG LOGO - CEK DI STREAMLIT CLOUD
-# =========================================================
-
-st.write("Status logo Instagram:", {
-    "terbaca": bool(logo_instagram),
-    "panjang_data": len(logo_instagram)
-})
-
-st.write("Status logo TikTok:", {
-    "terbaca": bool(logo_tiktok),
-    "panjang_data": len(logo_tiktok)
-})
-
-st.write("Awal data Instagram:", logo_instagram[:30])
-st.write("Awal data TikTok:", logo_tiktok[:30])
-
-# =========================================================
 # AUTH LOGIN DATABASE
 # =========================================================
 
