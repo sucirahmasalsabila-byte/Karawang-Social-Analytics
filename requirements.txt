@@ -1,3 +1,4 @@
+
 streamlit
 pandas
 plotly
@@ -5,7 +6,6 @@ bcrypt
 python-dotenv
 transformers
 torch
-
+torchvision
 streamlit-cookies-controller
-
-streamlit-cookies-controller
+psycopg[binary]
