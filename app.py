@@ -3487,93 +3487,75 @@ with st.sidebar:
         on_click=buka_tutup_upload
     )
 
+    
     # =====================================================
     # PLATFORM
     # =====================================================
 
-    platform = st.radio(
-        "Platform",
-        [
-            "Semua",
-            "Instagram",
-            "TikTok"
-        ],
-        index=None,
-        key="platform_filter",
-        on_change=pilih_platform_dashboard
-    )
-
-    if platform is None:
-        platform_aktif = "Semua"
-    else:
-        platform_aktif = platform
-
-    
     st.markdown(
         f"""
         <style>
-
+        /* Posisi logo dan tulisan di pilihan platform */
         .st-key-platform_filter [role="radiogroup"] label {{
             position: relative !important;
-            padding-left: 55px !important;
+            padding-left: 54px !important;
+            min-height: 44px !important;
+            display: flex !important;
+            align-items: center !important;
         }}
 
-        /* Logo Semua */
-        .st-key-platform_filter
-        [role="radiogroup"] label:nth-child(1)::before {{
+        /* Semua */
+        .st-key-platform_filter [role="radiogroup"] label:nth-child(1)::before {{
             content: "🌐";
             position: absolute;
-            left: 16px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
-            width: 27px;
-            height: 27px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 23px;
         }}
 
-        /* Logo Instagram */
-        .st-key-platform_filter
-        [role="radiogroup"] label:nth-child(2)::before {{
+        /* Instagram */
+        .st-key-platform_filter [role="radiogroup"] label:nth-child(2)::before {{
             content: "";
             position: absolute;
-            left: 16px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
             width: 28px;
             height: 28px;
-            display: block;
-            background-image: url("data:image/png;base64,{logo_instagram}") !important;
-            background-size: contain !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            z-index: 5;
+            background: url("data:image/png;base64,{logo_instagram}") center / contain no-repeat;
+            display: block !important;
+            z-index: 10;
         }}
 
-        /* Logo TikTok */
-        .st-key-platform_filter
-        [role="radiogroup"] label:nth-child(3)::before {{
+        /* TikTok */
+        .st-key-platform_filter [role="radiogroup"] label:nth-child(3)::before {{
             content: "";
             position: absolute;
-            left: 16px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
             width: 28px;
             height: 28px;
-            display: block;
-            background-image: url("data:image/png;base64,{logo_tiktok}") !important;
-            background-size: contain !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            z-index: 5;
+            background: url("data:image/png;base64,{logo_tiktok}") center / contain no-repeat;
+            display: block !important;
+            z-index: 10;
         }}
-
         </style>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
     )
+
+    platform = st.radio(
+        "Platform",
+        ["Semua", "Instagram", "TikTok"],
+        index=None,
+        key="platform_filter",
+        on_change=pilih_platform_dashboard,
+    )
+
+    platform_aktif = platform if platform is not None else "Semua"
+
 
         # =====================================================
     # JENIS DATA
