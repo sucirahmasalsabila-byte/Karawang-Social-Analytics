@@ -4529,208 +4529,187 @@ else:
 # AMBIL SEMUA KOMENTAR
 # =========================================================
 
-komentar_tampil = (
-    comments.copy()
-)
+komentar_tampil = comments.copy()
 
-
-post_relevan_ids = (
-    posts[
-        posts[
-            "topic"
-        ]
-        != "Lainnya"
-    ][
-        "post_id"
-    ]
-    .astype(str)
-    .tolist()
-)
-
-
-komentar_tampil = (
-    komentar_tampil[
-        komentar_tampil[
-            "post_id"
-        ]
-        .astype(str)
-        .isin(
-            post_relevan_ids
-        )
-    ]
-)
-
-
-if platform_aktif != "Semua":
-
-    komentar_tampil = (
-        komentar_tampil[
-            komentar_tampil[
-                "platform"
-            ]
-            == platform_aktif
-        ]
-    )
-
-
-if sentimen != "Semua":
-
-    komentar_tampil = (
-        komentar_tampil[
-            komentar_tampil[
-                "sentiment"
-            ]
-            == sentimen
-        ]
-    )
-
-
-if (
-    tanggal_mulai is not None
-    and tanggal_selesai is not None
-    and not komentar_tampil.empty
-):
-
-    komentar_tampil = (
-        komentar_tampil[
-            (
-                komentar_tampil[
-                    "tanggal"
-                ].dt.date
-                >= tanggal_mulai
-            )
-            &
-            (
-                komentar_tampil[
-                    "tanggal"
-                ].dt.date
-                <= tanggal_selesai
-            )
-        ]
-    )
-
-komentar_tampil[
-    "quality_score"
-] = (
-    komentar_tampil[
-        "text"
-    ].apply(
-        comment_quality_score
-    )
-)
-
-
-komentar_tampil = (
-    komentar_tampil
-    .sort_values(
-        by=[
-            "quality_score",
-            "tanggal"
-        ],
-        ascending=[
-            False,
-            False
-        ]
-    )
-)
-
-
-total_hasil_filter = len(
-    komentar_tampil
-)
-
-st.caption(
-    f"Ditemukan {total_hasil_filter} komentar. "
-    f"Menampilkan {len(komentar_tampil)} komentar. "
-    "Komentar yang lebih informatif diprioritaskan di bagian atas."
-)
-
-
+# Pastikan struktur data tersedia sebelum mengakses kolom
 if komentar_tampil.empty:
-
     st.info(
-        "Tidak ada komentar yang sesuai filter."
+        "Data komentar belum tersedia untuk ditampilkan. "
+        "Periksa koneksi database dan hasil load_comments()."
     )
 
+elif "post_id" not in komentar_tampil.columns:
+    st.error(
+        "Kolom post_id tidak ditemukan pada data komentar. "
+        "Periksa struktur tabel comments dan fungsi load_comments()."
+    )
+
+elif posts.empty or "post_id" not in posts.columns:
+    st.warning(
+        "Data postingan kosong atau kolom post_id tidak ditemukan. "
+        "Komentar belum dapat dicocokkan dengan postingan."
+    )
 
 else:
+    # Jika kolom topic tersedia, abaikan postingan bertopik Lainnya.
+    # Jika belum tersedia, jangan langsung menggagalkan dashboard.
+    if "topic" in posts.columns:
+        post_relevan_ids = (
+            posts.loc[
+                posts["topic"].fillna("").astype(str) != "Lainnya",
+                "post_id"
+            ]
+            .astype(str)
+            .tolist()
+        )
+    else:
+        print(
+            "PERINGATAN: kolom topic tidak ditemukan pada posts. "
+            "Pencocokan komentar dilakukan tanpa filter topic."
+        )
+        post_relevan_ids = (
+            posts["post_id"]
+            .dropna()
+            .astype(str)
+            .tolist()
+        )
 
-    for _, row in (
-    komentar_tampil
-    .head(30)
-    .iterrows()
-):
+    komentar_tampil = komentar_tampil[
+        komentar_tampil["post_id"]
+        .astype(str)
+        .isin(post_relevan_ids)
+    ]
 
-        with st.container(
-            border=True
-        ):
+    # Filter platform
+    if (
+        "platform" in komentar_tampil.columns
+        and platform_aktif != "Semua"
+    ):
+        komentar_tampil = komentar_tampil[
+            komentar_tampil["platform"] == platform_aktif
+        ]
 
-            bagian1, bagian2 = (
-                st.columns(
-                    [4, 1]
-                )
-            )
+    # Filter sentimen
+    if (
+        "sentiment" in komentar_tampil.columns
+        and sentimen != "Semua"
+    ):
+        komentar_tampil = komentar_tampil[
+            komentar_tampil["sentiment"] == sentimen
+        ]
 
-            with bagian1:
+    # Filter tanggal hanya jika kolom tanggal tersedia
+    if (
+        "tanggal" in komentar_tampil.columns
+        and tanggal_mulai is not None
+        and tanggal_selesai is not None
+        and not komentar_tampil.empty
+    ):
+        tanggal_data = pd.to_datetime(
+            komentar_tampil["tanggal"],
+            errors="coerce"
+        )
 
-                st.markdown(
-                    f"**{row['sentiment']} "
-                    f"• {row['topic']}**"
-                )
+        komentar_tampil = komentar_tampil.loc[
+            tanggal_data.notna()
+            & (tanggal_data.dt.date >= tanggal_mulai)
+            & (tanggal_data.dt.date <= tanggal_selesai)
+        ].copy()
 
-                username = safe_text(
-                    row[
-                        "username"
-                    ]
-                ).strip()
+    # Hitung kualitas komentar jika kolom text tersedia
+    if "text" in komentar_tampil.columns:
+        komentar_tampil["quality_score"] = (
+            komentar_tampil["text"]
+            .fillna("")
+            .astype(str)
+            .apply(comment_quality_score)
+        )
+    else:
+        komentar_tampil["quality_score"] = 0
 
-                if username:
+    # Urutkan berdasarkan kualitas dan tanggal yang tersedia
+    kolom_urut = ["quality_score"]
+    urutan = [False]
+
+    if "tanggal" in komentar_tampil.columns:
+        komentar_tampil["_tanggal_urut"] = pd.to_datetime(
+            komentar_tampil["tanggal"],
+            errors="coerce"
+        )
+        kolom_urut.append("_tanggal_urut")
+        urutan.append(False)
+
+    komentar_tampil = komentar_tampil.sort_values(
+        by=kolom_urut,
+        ascending=urutan
+    )
+
+    total_hasil_filter = len(komentar_tampil)
+
+    st.caption(
+        f"Ditemukan {total_hasil_filter} komentar. "
+        f"Menampilkan {min(30, total_hasil_filter)} komentar."
+    )
+
+    if komentar_tampil.empty:
+        st.info(
+            "Tidak ada komentar yang sesuai filter. "
+            "Coba pilih Semua pada filter platform dan sentimen."
+        )
+
+    else:
+        for _, row in komentar_tampil.head(30).iterrows():
+            with st.container(border=True):
+                bagian1, bagian2 = st.columns([4, 1])
+
+                with bagian1:
+                    sentiment_value = safe_text(
+                        row.get("sentiment", "Belum dianalisis")
+                    )
+                    topic_value = safe_text(
+                        row.get("topic", "Belum diklasifikasikan")
+                    )
+
+                    st.markdown(
+                        f"**{sentiment_value} • {topic_value}**"
+                    )
+
+                    username = safe_text(
+                        row.get("username", "")
+                    ).strip()
+
+                    if username:
+                        st.caption(f"👤 @{username}")
+
+                    st.write(
+                        safe_text(row.get("text", ""))
+                    )
+
+                    tanggal_value = format_date(
+                        row.get("tanggal", "")
+                    )
+
+                    likes_value = safe_number(
+                        row.get("likes", 0)
+                    )
 
                     st.caption(
-                        f"👤 @{username}"
+                        f"Tanggal: {tanggal_value} • "
+                        f"Likes: {likes_value}"
                     )
 
-                st.write(
-                    row[
-                        "text"
-                    ]
-                )
-
-                st.caption(
-                    "Tanggal: "
-                    + format_date(
-                        row[
-                            "tanggal"
-                        ]
+                with bagian2:
+                    post_id_comment = safe_text(
+                        row.get("post_id", "")
                     )
-                    + " • Likes: "
-                    + str(
-                        safe_number(
-                            row[
-                                "likes"
-                            ]
-                        )
-                    )
-                )
 
-            with bagian2:
-
-                post_id_comment = (
-                    safe_text(
-                        row[
-                            "post_id"
-                        ]
-                    )
-                )
-
-                source_url = (
-                    post_url_map.get(
+                    source_url = post_url_map.get(
                         post_id_comment,
                         ""
                     )
-                )
 
-                show_source_button(
-                    source_url,
-                    "🔗 Sumber"
-                )
+                    show_source_button(
+                        source_url,
+                        "🔗 Sumber"
+                    )
+
