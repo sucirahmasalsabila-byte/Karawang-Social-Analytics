@@ -3504,52 +3504,52 @@ with st.sidebar:
             align-items: center !important;
         }}
 
+       
         /* Semua */
         .st-key-platform_filter [role="radiogroup"] label:nth-child(1)::before {{
-            content: "🌐";
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 23px;
+            content: "🌐" !important;
+            position: absolute !important;
+            left: 16px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            width: 28px !important;
+            height: 28px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 23px !important;
+            background-image: none !important;
+            background-repeat: no-repeat !important;
         }}
 
-        
         /* Logo Instagram */
-.st-key-platform_filter
-[role="radiogroup"] label:nth-child(2)::before {{
-    content: "";
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 28px;
-    height: 28px;
-    display: block;
-    background-image: url("data:image/png;base64,{logo_instagram}") !important;
-    background-size: contain !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    z-index: 5;
-}}
+        .st-key-platform_filter [role="radiogroup"] label:nth-child(2)::before {{
+            content: "" !important;
+            position: absolute !important;
+            left: 16px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            width: 28px !important;
+            height: 28px !important;
+            display: block !important;
+            background: url("data:image/png;base64,{logo_instagram}") center / contain no-repeat !important;
+            pointer-events: none !important;
+        }}
 
-/* Logo TikTok */
-.st-key-platform_filter
-[role="radiogroup"] label:nth-child(3)::before {{
-    content: "";
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 28px;
-    height: 28px;
-    display: block;
-    background-image: url("data:image/png;base64,{logo_tiktok}") !important;
-    background-size: contain !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    z-index: 5;
-}}
+        /* Logo TikTok */
+        .st-key-platform_filter [role="radiogroup"] label:nth-child(3)::before {{
+            content: "" !important;
+            position: absolute !important;
+            left: 16px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            width: 28px !important;
+            height: 28px !important;
+            display: block !important;
+            background: url("data:image/png;base64,{logo_tiktok}") center / contain no-repeat !important;
+            pointer-events: none !important;
+        }}
+
         </style>
         """,
         unsafe_allow_html=True,
