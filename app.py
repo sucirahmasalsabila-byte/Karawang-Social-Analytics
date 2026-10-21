@@ -3514,33 +3514,42 @@ with st.sidebar:
             font-size: 23px;
         }}
 
-        /* Instagram */
-        .st-key-platform_filter [role="radiogroup"] label:nth-child(2)::before {{
-            content: "";
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 28px;
-            height: 28px;
-            background: url("data:image/png;base64,{logo_instagram}") center / contain no-repeat;
-            display: block !important;
-            z-index: 10;
-        }}
+        
+        /* Logo Instagram */
+.st-key-platform_filter
+[role="radiogroup"] label:nth-child(2)::before {{
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    display: block;
+    background-image: url("data:image/png;base64,{logo_instagram}") !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    z-index: 5;
+}}
 
-        /* TikTok */
-        .st-key-platform_filter [role="radiogroup"] label:nth-child(3)::before {{
-            content: "";
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 28px;
-            height: 28px;
-            background: url("data:image/png;base64,{logo_tiktok}") center / contain no-repeat;
-            display: block !important;
-            z-index: 10;
-        }}
+/* Logo TikTok */
+.st-key-platform_filter
+[role="radiogroup"] label:nth-child(3)::before {{
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    display: block;
+    background-image: url("data:image/png;base64,{logo_tiktok}") !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    z-index: 5;
+}}
         </style>
         """,
         unsafe_allow_html=True,
