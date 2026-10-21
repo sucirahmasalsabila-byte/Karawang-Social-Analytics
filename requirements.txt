@@ -3,3 +3,5 @@ pandas
 plotly
 bcrypt
 python-dotenv
+transformers
+torch
