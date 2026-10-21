@@ -131,11 +131,15 @@ load_css("style.css")
 # LOAD LOGO
 # =========================================================
 
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
 def get_image_base64(image_path):
+    full_path = BASE_DIR / image_path
 
     try:
-        with open(image_path, "rb") as image_file:
-
+        with open(full_path, "rb") as image_file:
             encoded = base64.b64encode(
                 image_file.read()
             ).decode("utf-8")
@@ -143,8 +147,8 @@ def get_image_base64(image_path):
         return encoded
 
     except FileNotFoundError:
+        print(f"FILE LOGO TIDAK DITEMUKAN: {full_path}")
         return ""
-
 
 logo_diskominfo = get_image_base64(
     "assets/logo_diskominfo.png"
@@ -165,6 +169,20 @@ logo_tiktok = get_image_base64(
 background_login = get_image_base64(
     "assets/kantor_karawang.png"
 )
+
+# =========================================================
+# DEBUG LOGO - CEK DI STREAMLIT CLOUD
+# =========================================================
+
+st.write("Status logo Instagram:", {
+    "terbaca": bool(logo_instagram),
+    "panjang_data": len(logo_instagram)
+})
+
+st.write("Status logo TikTok:", {
+    "terbaca": bool(logo_tiktok),
+    "panjang_data": len(logo_tiktok)
+})
 
 # =========================================================
 # AUTH LOGIN DATABASE
