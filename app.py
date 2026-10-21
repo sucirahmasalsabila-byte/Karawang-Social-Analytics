@@ -184,6 +184,9 @@ st.write("Status logo TikTok:", {
     "panjang_data": len(logo_tiktok)
 })
 
+st.write("Awal data Instagram:", logo_instagram[:30])
+st.write("Awal data TikTok:", logo_tiktok[:30])
+
 # =========================================================
 # AUTH LOGIN DATABASE
 # =========================================================
