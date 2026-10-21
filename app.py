@@ -1861,15 +1861,26 @@ def comment_quality_score(text):
 
 @st.cache_data(ttl=30)
 def load_posts():
+    conn = None
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM posts")
+        rows = cursor.fetchall()
 
-    conn = get_connection()
+        if not rows:
+            return pd.DataFrame()
 
-    df = pd.read_sql_query(
-        "SELECT * FROM posts",
-        conn
-    )
+        columns = [col[0] for col in cursor.description]
+        return pd.DataFrame(rows, columns=columns)
 
-    conn.close()
+    except Exception as e:
+        print(f"ERROR load_posts: {type(e).__name__}: {e}")
+        raise
+
+    finally:
+        if conn is not None:
+            conn.close()
 
     if not df.empty:
 
@@ -1932,15 +1943,27 @@ def load_posts():
 
 @st.cache_data(ttl=30)
 def load_comments():
+    conn = None
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM comments")
+        rows = cursor.fetchall()
 
-    conn = get_connection()
+        if not rows:
+            return pd.DataFrame()
 
-    df = pd.read_sql_query(
-        "SELECT * FROM comments",
-        conn
-    )
+        columns = [col[0] for col in cursor.description]
+        return pd.DataFrame(rows, columns=columns)
 
-    conn.close()
+    except Exception as e:
+        print(f"ERROR load_comments: {type(e).__name__}: {e}")
+        raise
+
+    finally:
+        if conn is not None:
+            conn.close()
+
 
     if not df.empty:
 
