@@ -3525,19 +3525,19 @@ with st.sidebar:
     else:
         platform_aktif = platform
 
+    
     st.markdown(
         f"""
         <style>
 
-        .st-key-platform_filter
-        [role="radiogroup"] label {{
+        .st-key-platform_filter [role="radiogroup"] label {{
             position: relative !important;
             padding-left: 55px !important;
         }}
 
+        /* Logo Semua */
         .st-key-platform_filter
-        [role="radiogroup"]
-        label:nth-child(1)::before {{
+        [role="radiogroup"] label:nth-child(1)::before {{
             content: "🌐";
             position: absolute;
             left: 16px;
@@ -3551,38 +3551,40 @@ with st.sidebar:
             font-size: 23px;
         }}
 
+        /* Logo Instagram */
         .st-key-platform_filter
-        [role="radiogroup"]
-        label:nth-child(2)::before {{
+        [role="radiogroup"] label:nth-child(2)::before {{
             content: "";
             position: absolute;
             left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            width: 27px;
-            height: 27px;
-            background-image:
-                url("data:image/png;base64,{logo_instagram}");
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+            width: 28px;
+            height: 28px;
+            display: block;
+            background-image: url("data:image/png;base64,{logo_instagram}") !important;
+            background-size: contain !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            z-index: 5;
         }}
 
+        /* Logo TikTok */
         .st-key-platform_filter
-        [role="radiogroup"]
-        label:nth-child(3)::before {{
+        [role="radiogroup"] label:nth-child(3)::before {{
             content: "";
             position: absolute;
             left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            width: 27px;
-            height: 27px;
-            background-image:
-                url("data:image/png;base64,{logo_tiktok}");
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+            width: 28px;
+            height: 28px;
+            display: block;
+            background-image: url("data:image/png;base64,{logo_tiktok}") !important;
+            background-size: contain !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            z-index: 5;
         }}
 
         </style>
