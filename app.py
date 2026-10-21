@@ -3522,8 +3522,10 @@ with st.sidebar:
             background-repeat: no-repeat !important;
         }}
 
+       
         /* Logo Instagram */
-        .st-key-platform_filter [role="radiogroup"] label:nth-child(2)::before {{
+        section[data-testid="stSidebar"] .st-key-platform_filter
+        [role="radiogroup"] label:nth-child(2)::before {{
             content: "" !important;
             position: absolute !important;
             left: 16px !important;
@@ -3532,12 +3534,17 @@ with st.sidebar:
             width: 28px !important;
             height: 28px !important;
             display: block !important;
-            background: url("data:image/png;base64,{logo_instagram}") center / contain no-repeat !important;
-            pointer-events: none !important;
+            background-image: url("data:image/png;base64,{logo_instagram}") !important;
+            background-size: contain !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            font-size: 0 !important;
+            z-index: 999 !important;
         }}
 
         /* Logo TikTok */
-        .st-key-platform_filter [role="radiogroup"] label:nth-child(3)::before {{
+        section[data-testid="stSidebar"] .st-key-platform_filter
+        [role="radiogroup"] label:nth-child(3)::before {{
             content: "" !important;
             position: absolute !important;
             left: 16px !important;
@@ -3546,9 +3553,14 @@ with st.sidebar:
             width: 28px !important;
             height: 28px !important;
             display: block !important;
-            background: url("data:image/png;base64,{logo_tiktok}") center / contain no-repeat !important;
-            pointer-events: none !important;
+            background-image: url("data:image/png;base64,{logo_tiktok}") !important;
+            background-size: contain !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            font-size: 0 !important;
+            z-index: 999 !important;
         }}
+
 
         </style>
         """,
