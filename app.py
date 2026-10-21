@@ -3487,20 +3487,18 @@ with st.sidebar:
         on_click=buka_tutup_upload
     )
 
+    
     # =====================================================
     # PLATFORM
     # =====================================================
 
     platform = st.radio(
         "Platform",
-        [
-            "Semua",
-            "Instagram",
-            "TikTok"
-        ],
+        ["Semua", "Instagram", "TikTok"],
         index=None,
         key="platform_filter",
-        on_change=pilih_platform_dashboard
+        on_change=pilih_platform_dashboard,
+        horizontal=True,
     )
 
     if platform is None:
@@ -3508,71 +3506,54 @@ with st.sidebar:
     else:
         platform_aktif = platform
 
-    
+    # Logo ditampilkan sebagai gambar HTML langsung
     st.markdown(
         f"""
         <style>
-
-        .st-key-platform_filter [role="radiogroup"] label {{
-            position: relative !important;
-            padding-left: 55px !important;
+        .platform-logo-row {{
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 6px;
+            margin-bottom: 12px;
         }}
 
-        /* Logo Semua */
-        .st-key-platform_filter
-        [role="radiogroup"] label:nth-child(1)::before {{
-            content: "🌐";
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 27px;
-            height: 27px;
+        .platform-logo-item {{
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 23px;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid #d9d9d9;
+            border-radius: 10px;
+            font-size: 14px;
         }}
 
-        /* Logo Instagram */
-        .st-key-platform_filter
-        [role="radiogroup"] label:nth-child(2)::before {{
-            content: "";
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
+        .platform-logo-item img {{
             width: 28px;
             height: 28px;
+            object-fit: contain;
             display: block;
-            background-image: url("data:image/png;base64,{logo_instagram}") !important;
-            background-size: contain !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            z-index: 5;
         }}
-
-        /* Logo TikTok */
-        .st-key-platform_filter
-        [role="radiogroup"] label:nth-child(3)::before {{
-            content: "";
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 28px;
-            height: 28px;
-            display: block;
-            background-image: url("data:image/png;base64,{logo_tiktok}") !important;
-            background-size: contain !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            z-index: 5;
-        }}
-
         </style>
+
+        <div class="platform-logo-row">
+            <div class="platform-logo-item">
+                <span style="font-size:24px;">🌐</span>
+                <span>Semua</span>
+            </div>
+            <div class="platform-logo-item">
+                <img src="data:image/png;base64,{logo_instagram}"
+                     alt="Instagram">
+                <span>Instagram</span>
+            </div>
+            <div class="platform-logo-item">
+                <img src="data:image/png;base64,{logo_tiktok}"
+                     alt="TikTok">
+                <span>TikTok</span>
+            </div>
+        </div>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
     )
 
         # =====================================================
