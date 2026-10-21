@@ -8,7 +8,7 @@ import plotly.express as px
 import streamlit as st
 from dotenv import load_dotenv
 
-from database_backup import get_connection, create_tables
+from database import get_connection, create_tables
 from topic_classifier import (
     TOPIC_LIST,
     classify_topic,
