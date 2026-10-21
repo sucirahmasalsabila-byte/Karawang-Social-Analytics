@@ -1,0 +1,10 @@
+﻿topik,Negatif,Netral,Positif,Total,Positif_%,Netral_%,Negatif_%,Sentimen_Dominan
+Infrastruktur,264,146,148,558,26.52,26.16,47.31,Negatif
+Pemerintahan,103,35,48,186,25.81,18.82,55.38,Negatif
+Keamanan & Kriminalitas,79,33,6,118,5.08,27.97,66.95,Negatif
+Pendidikan,48,32,8,88,9.09,36.36,54.55,Negatif
+Ekonomi & Ketenagakerjaan,44,19,8,71,11.27,26.76,61.97,Negatif
+Sosial & Fasilitas Publik,27,18,17,62,27.42,29.03,43.55,Negatif
+Transportasi & Lalu Lintas,28,21,13,62,20.97,33.87,45.16,Negatif
+Lingkungan,18,10,9,37,24.32,27.03,48.65,Negatif
+Pajak & Anggaran,10,8,3,21,14.29,38.1,47.62,Negatif

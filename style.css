@@ -1,0 +1,1861 @@
+/* =========================================================
+   GLOBAL APP
+   Mengikuti tema Light / Dark bawaan Streamlit
+   ========================================================= */
+
+.stApp {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.block-container {
+    max-width: 1450px;
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+
+/* =========================================================
+   SEMUA TEKS UTAMA
+   ========================================================= */
+
+.stApp h1,
+.stApp h2,
+.stApp h3,
+.stApp h4,
+.stApp h5,
+.stApp h6,
+.stApp p,
+.stApp label,
+.stApp span {
+    color: var(--text-color);
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+[data-testid="stSidebar"] {
+    background-color: var(--secondary-background-color) !important;
+
+    border-right: 1px solid
+        color-mix(
+            in srgb,
+            var(--text-color) 15%,
+            transparent
+        );
+}
+
+
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] h4,
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] span {
+    color: var(--text-color) !important;
+}
+
+
+/* =========================================================
+   METRIC / RINGKASAN MONITORING
+   ========================================================= */
+
+[data-testid="stMetric"] {
+    background-color:
+        var(--secondary-background-color) !important;
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--text-color) 12%,
+            transparent
+        );
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+    box-shadow:
+        0px 4px 15px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+[data-testid="stMetricLabel"] p {
+    color: var(--text-color) !important;
+    opacity: 0.75;
+}
+
+
+[data-testid="stMetricValue"] {
+    color: var(--text-color) !important;
+
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+}
+
+[data-testid="stMetricValue"] > div {
+    font-size: 32px !important;
+    line-height: 1.15 !important;
+
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+}
+
+
+/* =========================================================
+   HERO HEADER
+   ========================================================= */
+
+.hero {
+    background:
+        linear-gradient(
+            135deg,
+            #16324f,
+            #245f91
+        );
+
+    color: #ffffff !important;
+
+    padding: 28px 32px;
+
+    border-radius: 18px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0px 8px 25px
+        rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   HERO TITLE + LOGO KARAWANG
+   ========================================================= */
+
+.hero-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.hero-logo {
+    width: 82px !important;
+
+    height: 82px !important;
+
+    min-width: 82px !important;
+
+    max-width: 82px !important;
+
+    object-fit: contain !important;
+
+    flex-shrink: 0 !important;
+}
+
+
+.hero-title h1 {
+    margin: 0;
+
+    font-size: 36px;
+
+    line-height: 1.1;
+
+    color: #ffffff !important;
+}
+
+
+.hero h1 {
+    margin: 0;
+
+    color: #ffffff !important;
+}
+
+
+.hero p {
+    margin-top: 16px;
+
+    margin-bottom: 0;
+
+    opacity: 0.9;
+
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.login-title {
+    text-align: center;
+
+    margin-top: 7vh;
+
+    margin-bottom: 28px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   LOGIN BRAND
+   DISKOMINFO - JUDUL - KARAWANG
+   ========================================================= */
+
+.login-brand {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 45px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   CLASS DASAR LOGO LOGIN
+   ========================================================= */
+
+.login-logo {
+    object-fit: contain !important;
+
+    flex-shrink: 0 !important;
+
+    max-width: none !important;
+}
+
+
+/* =========================================================
+   LOGO DISKOMINFO LOGIN
+   Kotaknya kecil, tapi visual logo diperbesar
+   supaya tidak mendorong judul terlalu jauh
+   ========================================================= */
+
+.login-logo-diskominfo {
+    width: 180px !important;
+
+    height: 90px !important;
+
+    min-width: 180px !important;
+
+    max-width: 180px !important;
+
+    object-fit: contain !important;
+
+    transform: scale(1.65);
+
+    transform-origin: center;
+
+    flex-shrink: 0 !important;
+}
+
+
+/* =========================================================
+   LOGO KARAWANG LOGIN
+   ========================================================= */
+
+.login-logo-karawang {
+    width: 105px !important;
+
+    height: 105px !important;
+
+    min-width: 105px !important;
+
+    max-width: 105px !important;
+
+    object-fit: contain !important;
+
+    flex-shrink: 0 !important;
+}
+
+
+/* =========================================================
+   JUDUL LOGIN
+   ========================================================= */
+
+.login-brand h1 {
+    margin: 0;
+
+    font-size: 42px;
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+
+    color: var(--text-color) !important;
+}
+
+
+.login-title h1 {
+    color: var(--text-color) !important;
+}
+
+
+.login-title p {
+    color: var(--text-color) !important;
+
+    opacity: 0.7;
+
+    margin-top: 22px;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   LOGIN CONTAINER / BORDER CONTAINER
+   ========================================================= */
+
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background-color:
+        var(--secondary-background-color);
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--text-color) 15%,
+            transparent
+        ) !important;
+}
+
+
+/* =========================================================
+   INPUT TEXT
+   Username / Password
+   ========================================================= */
+
+[data-baseweb="input"] > div {
+    background-color:
+        var(--secondary-background-color) !important;
+}
+
+
+[data-baseweb="input"] input {
+    background-color:
+        transparent !important;
+
+    color:
+        var(--text-color) !important;
+}
+
+
+/* =========================================================
+   SELECTBOX
+   ========================================================= */
+
+[data-baseweb="select"] > div {
+    background-color:
+        var(--secondary-background-color) !important;
+
+    color:
+        var(--text-color) !important;
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--text-color) 15%,
+            transparent
+        ) !important;
+}
+
+
+[data-baseweb="select"] span {
+    color:
+        var(--text-color) !important;
+}
+
+
+/* =========================================================
+   DATE INPUT
+   ========================================================= */
+
+[data-testid="stDateInput"] input {
+    color:
+        var(--text-color) !important;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.stButton > button {
+    border-radius: 10px;
+
+    background-color:
+        var(--secondary-background-color);
+
+    color:
+        var(--text-color);
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--text-color) 18%,
+            transparent
+        );
+}
+
+
+.stButton > button:hover {
+    border-color:
+        var(--primary-color);
+
+    color:
+        var(--primary-color);
+}
+
+
+/* =========================================================
+   LINK BUTTON
+   ========================================================= */
+
+[data-testid="stLinkButton"] a {
+    background-color:
+        var(--secondary-background-color);
+
+    color:
+        var(--text-color);
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--text-color) 18%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   RADIO
+   ========================================================= */
+
+[data-testid="stRadio"] label {
+    color:
+        var(--text-color) !important;
+}
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+[data-baseweb="tab-list"] {
+    background-color:
+        transparent;
+}
+
+
+[data-baseweb="tab"] {
+    color:
+        var(--text-color) !important;
+}
+
+
+/* =========================================================
+   DATAFRAME
+   ========================================================= */
+
+[data-testid="stDataFrame"] {
+    background-color:
+        var(--secondary-background-color);
+}
+
+
+/* =========================================================
+   EXPANDER
+   ========================================================= */
+
+[data-testid="stExpander"] {
+    background-color:
+        var(--secondary-background-color);
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--text-color) 12%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   ALERT / INFO
+   ========================================================= */
+
+[data-testid="stAlert"] {
+    color:
+        var(--text-color);
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+hr {
+    border-color:
+        color-mix(
+            in srgb,
+            var(--text-color) 12%,
+            transparent
+        ) !important;
+}
+
+
+/* =========================================================
+   CAPTION / SMALL TEXT
+   ========================================================= */
+
+.small-text {
+    color:
+        var(--text-color);
+
+    opacity: 0.65;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   PLOTLY CHART CONTAINER
+   ========================================================= */
+
+[data-testid="stPlotlyChart"] {
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .login-brand {
+        gap: 28px;
+    }
+
+
+    .login-logo-diskominfo {
+        width: 155px !important;
+
+        height: 82px !important;
+
+        min-width: 155px !important;
+
+        max-width: 155px !important;
+
+        transform: scale(1.45);
+    }
+
+
+    .login-logo-karawang {
+        width: 85px !important;
+
+        height: 85px !important;
+
+        min-width: 85px !important;
+
+        max-width: 85px !important;
+    }
+
+
+    .login-brand h1 {
+        font-size: 34px;
+    }
+
+
+    .hero-logo {
+        width: 70px !important;
+
+        height: 70px !important;
+
+        min-width: 70px !important;
+
+        max-width: 70px !important;
+    }
+
+
+    .hero-title h1 {
+        font-size: 30px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .login-brand {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .login-logo-diskominfo {
+        width: 170px !important;
+
+        height: 85px !important;
+
+        min-width: 170px !important;
+
+        max-width: 170px !important;
+
+        transform: scale(1.35);
+    }
+
+
+    .login-logo-karawang {
+        width: 90px !important;
+
+        height: 90px !important;
+
+        min-width: 90px !important;
+
+        max-width: 90px !important;
+    }
+
+
+    .login-brand h1 {
+        font-size: 30px;
+
+        text-align: center;
+
+        white-space: normal;
+    }
+
+
+    .login-title p {
+        font-size: 15px;
+    }
+
+
+    .hero {
+        padding: 22px;
+    }
+
+
+    .hero-title {
+        gap: 14px;
+    }
+
+
+    .hero-logo {
+        width: 60px !important;
+
+        height: 60px !important;
+
+        min-width: 60px !important;
+
+        max-width: 60px !important;
+    }
+
+
+    .hero-title h1 {
+        font-size: 26px;
+    }
+
+
+    .hero p {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   SIDEBAR FILTER BARU
+   ========================================================= */
+
+/* Sidebar putih */
+[data-testid="stSidebar"] {
+    background: #ffffff !important;
+}
+
+
+/* =========================================================
+   TOMBOL KELUAR
+   ========================================================= */
+
+/* =========================================================
+   TOMBOL KELUAR
+   ========================================================= */
+
+[data-testid="stSidebar"] .st-key-btn_logout {
+    width: 100% !important;
+}
+
+[data-testid="stSidebar"] .st-key-btn_logout button {
+    width: 100% !important;
+    min-height: 48px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #d8e0ea !important;
+    border-radius: 10px !important;
+
+    box-shadow:
+        0 2px 6px
+        rgba(15, 23, 42, 0.06) !important;
+
+    color: #172033 !important;
+
+    font-size: 15px !important;
+    font-weight: 500 !important;
+
+    transition: 0.2s ease !important;
+}
+
+
+/* Saat mouse diarahkan */
+[data-testid="stSidebar"] .st-key-btn_logout button:hover {
+    background: #fff5f5 !important;
+
+    border-color: #ef4444 !important;
+
+    color: #ef4444 !important;
+
+    box-shadow:
+        0 3px 8px
+        rgba(239, 68, 68, 0.10) !important;
+}
+
+
+/* Saat diklik */
+[data-testid="stSidebar"] .st-key-btn_logout button:active {
+    background: #fee2e2 !important;
+    border-color: #dc2626 !important;
+    color: #dc2626 !important;
+}
+
+
+/* =========================================================
+   JUDUL FILTER ANALISIS
+   ========================================================= */
+
+[data-testid="stSidebar"] h2 {
+    color: #172033 !important;
+
+    font-size: 25px !important;
+    font-weight: 700 !important;
+
+    margin-top: 18px !important;
+    margin-bottom: 26px !important;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
+    background: transparent !important;
+    border: none !important;
+
+    padding: 0 !important;
+    margin-bottom: 9px !important;
+}
+
+
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
+    color: #172033 !important;
+
+    font-size: 15px !important;
+    font-weight: 500 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* =========================================================
+   PLATFORM
+   ========================================================= */
+
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"] {
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    gap: 4px !important;
+
+    width: 100% !important;
+}
+
+
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"] label {
+
+    position: relative !important;
+
+    width: 100% !important;
+    min-height: 52px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    box-sizing: border-box !important;
+
+    padding: 10px 15px !important;
+    margin: 0 !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #d8e0ea !important;
+    border-radius: 10px !important;
+
+    box-shadow:
+        0 2px 5px rgba(15, 23, 42, 0.04) !important;
+}
+
+
+/* hover */
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"] label:hover {
+
+    border-color: #2f80ed !important;
+    background: #f8fbff !important;
+}
+
+
+/* aktif */
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"]
+label:has(input:checked) {
+
+    border-color: #2f80ed !important;
+    background: #f4f8ff !important;
+}
+
+
+/* radio circle pindah kanan */
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"]
+label > div:first-child {
+
+    position: absolute !important;
+
+    right: 15px !important;
+
+    margin: 0 !important;
+}
+
+
+/* =========================================================
+   SELECTBOX
+   ========================================================= */
+
+[data-testid="stSidebar"]
+.st-key-jenis_data_filter
+[data-baseweb="select"] > div,
+
+[data-testid="stSidebar"]
+.st-key-topik_filter
+[data-baseweb="select"] > div,
+
+[data-testid="stSidebar"]
+.st-key-jumlah_sample_filter
+[data-baseweb="select"] > div {
+
+    min-height: 52px !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #d8e0ea !important;
+    border-radius: 10px !important;
+
+    box-shadow:
+        0 3px 7px rgba(15, 23, 42, 0.06) !important;
+
+    padding-left: 8px !important;
+}
+
+
+[data-testid="stSidebar"]
+[data-baseweb="select"] > div:hover {
+
+    border-color: #2f80ed !important;
+}
+
+
+/* =========================================================
+   SENTIMEN
+   ========================================================= */
+
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"] {
+
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr)) !important;
+
+    gap: 0 !important;
+
+    width: 100% !important;
+}
+
+
+/* button sentiment */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"] label {
+
+    min-width: 0 !important;
+    min-height: 48px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 6px 2px !important;
+    margin: 0 !important;
+
+    background: #ffffff !important;
+
+    border-top: 1px solid #d8e0ea !important;
+    border-bottom: 1px solid #d8e0ea !important;
+    border-right: 1px solid #d8e0ea !important;
+
+    box-shadow:
+        0 2px 5px rgba(15, 23, 42, 0.04) !important;
+}
+
+
+/* pertama */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"] label:first-child {
+
+    border-left: 1px solid #d8e0ea !important;
+    border-radius: 10px 0 0 10px !important;
+}
+
+
+/* terakhir */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"] label:last-child {
+
+    border-radius: 0 10px 10px 0 !important;
+}
+
+
+/* sembunyikan lingkaran radio */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label > div:first-child {
+
+    display: none !important;
+}
+
+
+/* text sentiment */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"] label p {
+
+    margin: 0 !important;
+
+    font-size: 11px !important;
+    font-weight: 600 !important;
+}
+
+
+/* SEMUA */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(1) p {
+
+    color: #475467 !important;
+}
+
+
+/* POSITIF */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(2) p {
+
+    color: #12a66a !important;
+}
+
+
+/* NETRAL */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(3) p {
+
+    color: #7357d8 !important;
+}
+
+
+/* NEGATIF */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(4) p {
+
+    color: #ef4444 !important;
+}
+
+
+/* aktif umum */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:has(input:checked) {
+
+    background: #f4f8ff !important;
+
+    box-shadow:
+        inset 0 0 0 1.5px #2f80ed !important;
+}
+
+
+/* POSITIF aktif */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(2):has(input:checked) {
+
+    background: #effcf6 !important;
+
+    box-shadow:
+        inset 0 0 0 1.5px #16c784 !important;
+}
+
+
+/* NETRAL aktif */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(3):has(input:checked) {
+
+    background: #f5f3ff !important;
+
+    box-shadow:
+        inset 0 0 0 1.5px #7357d8 !important;
+}
+
+
+/* NEGATIF aktif */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(4):has(input:checked) {
+
+    background: #fff5f5 !important;
+
+    box-shadow:
+        inset 0 0 0 1.5px #ef4444 !important;
+}
+
+
+/* =========================================================
+   DATE INPUT
+   ========================================================= */
+
+[data-testid="stSidebar"]
+[data-testid="stDateInput"]
+[data-baseweb="input"] > div {
+
+    min-height: 52px !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #d8e0ea !important;
+    border-radius: 10px !important;
+
+    box-shadow:
+        0 3px 7px rgba(15, 23, 42, 0.06) !important;
+}
+
+
+/* =========================================================
+   JARAK
+   ========================================================= */
+
+[data-testid="stSidebar"] .st-key-platform_filter,
+[data-testid="stSidebar"] .st-key-jenis_data_filter,
+[data-testid="stSidebar"] .st-key-sentimen_filter,
+[data-testid="stSidebar"] .st-key-topik_filter,
+[data-testid="stSidebar"] .st-key-jumlah_sample_filter {
+
+    margin-bottom: 25px !important;
+}
+
+/* =========================================================
+   FIX FINAL SIDEBAR
+   LEBAR TETAP + PLATFORM FULL WIDTH
+   ========================================================= */
+
+
+/* =========================================================
+   1. KUNCI LEBAR SIDEBAR
+   ========================================================= */
+
+section[data-testid="stSidebar"] {
+    width: 360px !important;
+    min-width: 360px !important;
+    max-width: 360px !important;
+
+    background: #ffffff !important;
+}
+
+
+/* isi sidebar ikut 360px */
+section[data-testid="stSidebar"] > div {
+    width: 360px !important;
+    min-width: 360px !important;
+    max-width: 360px !important;
+}
+
+
+/* =========================================================
+   2. HILANGKAN GARIS RESIZE / TARIK SIDEBAR
+   ========================================================= */
+
+[data-testid="stSidebarResizeHandle"],
+[data-testid="stSidebarResizer"] {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+
+/* =========================================================
+   3. AREA ISI SIDEBAR
+   ========================================================= */
+
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+}
+
+
+/* =========================================================
+   4. PLATFORM FULL WIDTH
+   ========================================================= */
+
+section[data-testid="stSidebar"]
+.st-key-platform_filter {
+
+    width: 100% !important;
+}
+
+
+section[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"] {
+
+    display: grid !important;
+
+    grid-template-columns: 1fr !important;
+
+    width: 100% !important;
+
+    gap: 7px !important;
+}
+
+
+/* Card Semua / Instagram / TikTok */
+section[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"] label {
+
+    position: relative !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    min-height: 54px !important;
+
+    box-sizing: border-box !important;
+
+    margin: 0 !important;
+
+    padding:
+        10px
+        50px
+        10px
+        58px !important;
+
+    background: #ffffff !important;
+
+    border:
+        1px solid
+        #d8e0ea !important;
+
+    border-radius:
+        10px !important;
+
+    box-shadow:
+        0 2px 6px
+        rgba(
+            15,
+            23,
+            42,
+            0.05
+        ) !important;
+}
+
+
+/* hover */
+section[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"] label:hover {
+
+    border-color:
+        #2f80ed !important;
+
+    background:
+        #f8fbff !important;
+}
+
+
+/* pilihan aktif */
+section[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"]
+label:has(input:checked) {
+
+    border:
+        1.5px solid
+        #2f80ed !important;
+
+    background:
+        #f4f8ff !important;
+}
+
+
+/* =========================================================
+   5. RADIO BULAT PINDAH KE KANAN
+   ========================================================= */
+
+section[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"]
+label > div:first-child {
+
+    position: absolute !important;
+
+    left: auto !important;
+    right: 17px !important;
+
+    top: 50% !important;
+
+    transform:
+        translateY(-50%) !important;
+
+    margin: 0 !important;
+}
+
+
+/* =========================================================
+   6. TEXT PLATFORM
+   ========================================================= */
+
+section[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"]
+label p {
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size:
+        15px !important;
+
+    font-weight:
+        500 !important;
+
+    color:
+        #172033 !important;
+}
+
+
+/* text aktif */
+section[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"]
+label:has(input:checked) p {
+
+    color:
+        #2563eb !important;
+}
+
+
+/* =========================================================
+   7. UKURAN LOGO PLATFORM
+   CSS ::before YANG SUDAH ADA TETAP DIPAKAI
+   ========================================================= */
+
+section[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"]
+label::before {
+
+    left: 17px !important;
+
+    width: 28px !important;
+    height: 28px !important;
+}
+
+
+/* =========================================================
+   8. JENIS DATA / TOPIK / JUMLAH SAMPEL
+   FULL WIDTH
+   ========================================================= */
+
+section[data-testid="stSidebar"]
+.st-key-jenis_data_filter,
+
+section[data-testid="stSidebar"]
+.st-key-topik_filter,
+
+section[data-testid="stSidebar"]
+.st-key-jumlah_sample_filter {
+
+    width: 100% !important;
+}
+
+
+section[data-testid="stSidebar"]
+.st-key-jenis_data_filter
+[data-baseweb="select"] > div,
+
+section[data-testid="stSidebar"]
+.st-key-topik_filter
+[data-baseweb="select"] > div,
+
+section[data-testid="stSidebar"]
+.st-key-jumlah_sample_filter
+[data-baseweb="select"] > div {
+
+    width: 100% !important;
+
+    min-height: 52px !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* =========================================================
+   9. SENTIMEN FULL WIDTH
+   ========================================================= */
+
+section[data-testid="stSidebar"]
+.st-key-sentimen_filter {
+
+    width: 100% !important;
+}
+
+
+section[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"] {
+
+    width: 100% !important;
+}
+
+/* =========================================================
+   FIX SIDEBAR LIGHT / DARK MODE
+   TEMPATKAN PALING BAWAH STYLE.CSS
+   ========================================================= */
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+section[data-testid="stSidebar"],
+[data-testid="stSidebar"] {
+
+    background-color:
+        var(--secondary-background-color) !important;
+
+    color:
+        var(--text-color) !important;
+}
+
+
+/* =========================================================
+   SEMUA TEKS SIDEBAR
+   ========================================================= */
+
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] h4,
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] label {
+
+    color:
+        var(--text-color) !important;
+}
+
+/* =========================================================
+   PLATFORM CARD
+   ========================================================= */
+
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"] label {
+
+    background:
+        var(--secondary-background-color) !important;
+
+    color:
+        var(--text-color) !important;
+
+    border:
+        1px solid
+        color-mix(
+            in srgb,
+            var(--text-color) 18%,
+            transparent
+        ) !important;
+}
+
+
+/* Platform hover */
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"] label:hover {
+
+    background:
+        color-mix(
+            in srgb,
+            var(--primary-color) 8%,
+            var(--secondary-background-color)
+        ) !important;
+
+    border-color:
+        var(--primary-color) !important;
+}
+
+
+/* Platform aktif */
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"]
+label:has(input:checked) {
+
+    background:
+        color-mix(
+            in srgb,
+            var(--primary-color) 10%,
+            var(--secondary-background-color)
+        ) !important;
+
+    border-color:
+        var(--primary-color) !important;
+}
+
+
+/* Tulisan platform */
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"] label p {
+
+    color:
+        var(--text-color) !important;
+}
+
+
+/* Tulisan platform aktif */
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"]
+label:has(input:checked) p {
+
+    color:
+        var(--primary-color) !important;
+}
+
+
+/* =========================================================
+   SELECTBOX
+   Jenis Data / Topik / Jumlah Sampel
+   ========================================================= */
+
+[data-testid="stSidebar"]
+[data-baseweb="select"] > div {
+
+    background:
+        var(--secondary-background-color) !important;
+
+    color:
+        var(--text-color) !important;
+
+    border:
+        1px solid
+        color-mix(
+            in srgb,
+            var(--text-color) 18%,
+            transparent
+        ) !important;
+}
+
+
+[data-testid="stSidebar"]
+[data-baseweb="select"] span {
+
+    color:
+        var(--text-color) !important;
+}
+
+
+[data-testid="stSidebar"]
+[data-baseweb="select"] > div:hover {
+
+    border-color:
+        var(--primary-color) !important;
+}
+
+
+/* =========================================================
+   SENTIMEN
+   ========================================================= */
+
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"] label {
+
+    background:
+        var(--secondary-background-color) !important;
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--text-color) 18%,
+            transparent
+        ) !important;
+}
+
+
+/* Semua */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(1) p {
+
+    color:
+        var(--text-color) !important;
+}
+
+
+/* Positif */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(2) p {
+
+    color:
+        #16c784 !important;
+}
+
+
+/* Netral */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(3) p {
+
+    color:
+        #8b7cf6 !important;
+}
+
+
+/* Negatif */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:nth-child(4) p {
+
+    color:
+        #ff5c5c !important;
+}
+
+
+/* Sentimen aktif umum */
+[data-testid="stSidebar"]
+.st-key-sentimen_filter
+[role="radiogroup"]
+label:has(input:checked) {
+
+    background:
+        color-mix(
+            in srgb,
+            var(--primary-color) 10%,
+            var(--secondary-background-color)
+        ) !important;
+}
+
+
+/* =========================================================
+   DATE INPUT
+   ========================================================= */
+
+[data-testid="stSidebar"]
+[data-testid="stDateInput"]
+[data-baseweb="input"] > div {
+
+    background:
+        var(--secondary-background-color) !important;
+
+    border:
+        1px solid
+        color-mix(
+            in srgb,
+            var(--text-color) 18%,
+            transparent
+        ) !important;
+}
+
+
+[data-testid="stSidebar"]
+[data-testid="stDateInput"] input {
+
+    color:
+        var(--text-color) !important;
+}
+
+/* =========================================================
+   FIX INTERAKSI SIDEBAR
+   ========================================================= */
+
+/* Semua widget sidebar harus bisa diklik */
+[data-testid="stSidebar"] button,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] input,
+[data-testid="stSidebar"] [role="radiogroup"],
+[data-testid="stSidebar"] [data-baseweb="select"],
+[data-testid="stSidebar"] [data-testid="stDateInput"] {
+    pointer-events: auto !important;
+}
+
+
+/* Pastikan isi sidebar berada di atas elemen dekoratif */
+[data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+
+/* Tombol logout harus benar-benar clickable */
+[data-testid="stSidebar"] .st-key-btn_logout {
+    position: relative !important;
+    z-index: 20 !important;
+
+    pointer-events: auto !important;
+}
+
+
+[data-testid="stSidebar"] .st-key-btn_logout button {
+    position: relative !important;
+    z-index: 21 !important;
+
+    pointer-events: auto !important;
+
+    cursor: pointer !important;
+}
+
+
+/* Radio platform */
+[data-testid="stSidebar"] .st-key-platform_filter {
+    position: relative !important;
+    z-index: 15 !important;
+
+    pointer-events: auto !important;
+}
+
+
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"] label {
+
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+
+/* Pseudo-element logo jangan menangkap klik */
+[data-testid="stSidebar"]
+.st-key-platform_filter
+[role="radiogroup"]
+label::before {
+
+    pointer-events: none !important;
+}
+
+
+/* Hilangkan handle resize, tetapi jangan tutupi sidebar */
+[data-testid="stSidebarResizeHandle"],
+[data-testid="stSidebarResizer"] {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* =========================================================
+   TOMBOL KELUAR
+   ========================================================= */
+
+[data-testid="stSidebar"] .st-key-btn_logout_global {
+    width: 100% !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+[data-testid="stSidebar"]
+.st-key-btn_logout_global button {
+    width: 100% !important;
+    min-height: 66px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    padding: 0 24px !important;
+
+    background:
+        var(--secondary-background-color) !important;
+
+    color:
+        var(--text-color) !important;
+
+    border:
+        1px solid
+        color-mix(
+            in srgb,
+            var(--text-color) 18%,
+            transparent
+        ) !important;
+
+    border-radius: 12px !important;
+
+    font-size: 17px !important;
+    font-weight: 600 !important;
+
+    cursor: pointer !important;
+}
+
+[data-testid="stSidebar"]
+.st-key-btn_logout_global button p {
+    width: 100% !important;
+    text-align: left !important;
+
+    margin: 0 !important;
+
+    font-size: 17px !important;
+    font-weight: 600 !important;
+
+    color: inherit !important;
+}
+
+[data-testid="stSidebar"]
+.st-key-btn_logout_global button:hover {
+    border-color: #ef4444 !important;
+    color: #ef4444 !important;
+}
+
+/* =========================================================
+   TOMBOL UPLOAD DATASET SIDEBAR
+   ========================================================= */
+
+.st-key-btn_toggle_upload button {
+    justify-content: flex-start !important;
+    text-align: left !important;
+
+    min-height: 58px !important;
+    padding: 0 18px !important;
+
+    font-size: 19px !important;
+    font-weight: 600 !important;
+
+    border-radius: 12px !important;
+}
+
+.st-key-btn_toggle_upload button p {
+    width: 100% !important;
+    text-align: left !important;
+
+    font-size: 19px !important;
+    font-weight: 600 !important;
+
+    margin: 0 !important;
+}
+
+/* =========================================================
+   KUNCI SIDEBAR - TIDAK BISA COLLAPSE
+   ========================================================= */
+
+/* Hilangkan tombol << saat sidebar terbuka */
+[data-testid="stSidebarCollapseButton"] {
+    display: none !important;
+}
+
+/* Hilangkan tombol >> saat sidebar tertutup */
+[data-testid="stSidebarCollapsedControl"] {
+    display: none !important;
+}
+
+/* Hilangkan tombol collapse/expand berdasarkan aria-label */
+button[aria-label="Collapse sidebar"],
+button[aria-label="Expand sidebar"] {
+    display: none !important;
+}
+
+/* Sidebar tetap memiliki lebar tetap */
+section[data-testid="stSidebar"] {
+    width: 360px !important;
+    min-width: 360px !important;
+    max-width: 360px !important;
+}
+
+/* Hilangkan resize handle */
+[data-testid="stSidebarResizeHandle"],
+[data-testid="stSidebarResizer"] {
+    display: none !important;
+    pointer-events: none !important;
+}
