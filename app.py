@@ -106,18 +106,24 @@ st.set_page_config(
 )
 
 
+
 # =========================================================
 # LOAD CSS
 # =========================================================
 
+from pathlib import Path
+
+# Ambil lokasi folder tempat app.py berada
+BASE_DIR = Path(__file__).resolve().parent
+
 def load_css(file_name):
+    css_path = BASE_DIR / file_name
 
-    with open(
-        file_name,
-        "r",
-        encoding="utf-8"
-    ) as file:
+    if not css_path.exists():
+        st.warning(f"File CSS tidak ditemukan: {css_path}")
+        return
 
+    with open(css_path, "r", encoding="utf-8") as file:
         st.markdown(
             f"<style>{file.read()}</style>",
             unsafe_allow_html=True
@@ -131,24 +137,18 @@ load_css("style.css")
 # LOAD LOGO
 # =========================================================
 
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent
-
 def get_image_base64(image_path):
-    full_path = BASE_DIR / image_path
+    path = BASE_DIR / image_path
 
-    try:
-        with open(full_path, "rb") as image_file:
-            encoded = base64.b64encode(
-                image_file.read()
-            ).decode("utf-8")
-
-        return encoded
-
-    except FileNotFoundError:
-        print(f"FILE LOGO TIDAK DITEMUKAN: {full_path}")
+    if not path.is_file():
+        st.warning(f"Logo tidak ditemukan: {path}")
         return ""
+
+    with open(path, "rb") as image_file:
+        return base64.b64encode(
+            image_file.read()
+        ).decode("utf-8")
+
 
 logo_diskominfo = get_image_base64(
     "assets/logo_diskominfo.png"
@@ -164,10 +164,6 @@ logo_instagram = get_image_base64(
 
 logo_tiktok = get_image_base64(
     "assets/logo_tiktok.png"
-)
-
-background_login = get_image_base64(
-    "assets/kantor_karawang.png"
 )
 
 # =========================================================
@@ -3578,7 +3574,7 @@ with st.sidebar:
     platform_aktif = platform if platform is not None else "Semua"
 
 
-        # =====================================================
+    # =====================================================
     # JENIS DATA
     # =====================================================
 
