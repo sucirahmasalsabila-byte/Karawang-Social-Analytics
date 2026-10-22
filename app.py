@@ -3488,61 +3488,19 @@ with st.sidebar:
 
     
     # =====================================================
-    # PLATFORM
-    # =====================================================
-
-    st.markdown(
-        f"""
-        <style>
-        /* Dasar pilihan platform */
-        .st-key-platform_filter [role="radiogroup"] label {{
-            position: relative !important;
-            padding-left: 54px !important;
-            min-height: 44px !important;
-            display: flex !important;
-            align-items: center !important;
-        }}
-
-         /* Semua */
-         .st-key-platform_filter [role="radiogroup"] label::before {{
-            content: "" !important;
-            position: absolute !important;
-            left: 16px !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            width: 28px !important;
-            height: 28px !important;
-            background-size: contain !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            font-size: 0 !important;
-            z-index: 999 !important;
-        }}
-
-        /* Pilihan pertama: Semua */
-        .st-key-platform_filter [role="radiogroup"] label:nth-child(1)::before {{
-            content: "🌐" !important;
-            background-image: none !important;
-            font-size: 23px !important;
-        }}
-
-          /* Pilihan kedua: Instagram */
-        .st-key-platform_filter [role="radiogroup"] label:nth-child(2)::before {{
-            background-image: url("data:image/png;base64,{logo_instagram}") !important;
-        }}
-
-        /* Pilihan ketiga: TikTok */
-        .st-key-platform_filter [role="radiogroup"] label:nth-child(3)::before {{
-            background-image: url("data:image/png;base64,{logo_tiktok}") !important;
-        }}
-         </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    # # PLATFORM
+    # # =====================================================
+    
+    platform_options = {
+        "Semua": "🌐 Semua",
+        "Instagram": f"![](data:image/png;base64,{logo_instagram}) Instagram",
+        "TikTok": f"![](data:image/png;base64,{logo_tiktok}) TikTok",
+    }
 
     platform = st.radio(
         "Platform",
-        ["Semua", "Instagram", "TikTok"],
+        options=list(platform_options.keys()),
+        format_func=lambda x: platform_options[x],
         index=None,
         key="platform_filter",
         on_change=pilih_platform_dashboard,
