@@ -3494,7 +3494,7 @@ with st.sidebar:
     st.markdown(
         f"""
         <style>
-        /* Posisi logo dan tulisan di pilihan platform */
+        /* Dasar pilihan platform */
         .st-key-platform_filter [role="radiogroup"] label {{
             position: relative !important;
             padding-left: 54px !important;
@@ -3503,64 +3503,39 @@ with st.sidebar:
             align-items: center !important;
         }}
 
-       
-        /* Semua */
+         /* Semua */
+         .st-key-platform_filter [role="radiogroup"] label::before {{
+            content: "" !important;
+            position: absolute !important;
+            left: 16px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            width: 28px !important;
+            height: 28px !important;
+            background-size: contain !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            font-size: 0 !important;
+            z-index: 999 !important;
+        }}
+
+        /* Pilihan pertama: Semua */
         .st-key-platform_filter [role="radiogroup"] label:nth-child(1)::before {{
             content: "🌐" !important;
-            position: absolute !important;
-            left: 16px !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            width: 28px !important;
-            height: 28px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            font-size: 23px !important;
             background-image: none !important;
-            background-repeat: no-repeat !important;
+            font-size: 23px !important;
         }}
 
-       
-        /* Logo Instagram */
-        section[data-testid="stSidebar"] .st-key-platform_filter
-        [role="radiogroup"] label:nth-of-type(2)::before {{
-            content: "" !important;
-            position: absolute !important;
-            left: 16px !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            width: 28px !important;
-            height: 28px !important;
-            display: block !important;
+          /* Pilihan kedua: Instagram */
+        .st-key-platform_filter [role="radiogroup"] label:nth-child(2)::before {{
             background-image: url("data:image/png;base64,{logo_instagram}") !important;
-            background-size: contain !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            font-size: 0 !important;
-            z-index: 999 !important;
         }}
 
-        /* Logo TikTok */
-        section[data-testid="stSidebar"] .st-key-platform_filter
-        [role="radiogroup"] label:nth-of-type(3)::before {{
-            content: "" !important;
-            position: absolute !important;
-            left: 16px !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            width: 28px !important;
-            height: 28px !important;
-            display: block !important;
+        /* Pilihan ketiga: TikTok */
+        .st-key-platform_filter [role="radiogroup"] label:nth-child(3)::before {{
             background-image: url("data:image/png;base64,{logo_tiktok}") !important;
-            background-size: contain !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            font-size: 0 !important;
-            z-index: 999 !important;
         }}
-
-        </style>
+         </style>
         """,
         unsafe_allow_html=True,
     )
@@ -3574,7 +3549,6 @@ with st.sidebar:
     )
 
     platform_aktif = platform if platform is not None else "Semua"
-
 
     # =====================================================
     # JENIS DATA
