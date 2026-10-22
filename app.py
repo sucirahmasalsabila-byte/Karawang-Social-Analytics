@@ -3540,7 +3540,7 @@ with st.sidebar:
 
         /* Logo TikTok */
         section[data-testid="stSidebar"] .st-key-platform_filter
-        [[role="radiogroup"] label:nth-of-type(3)::before {{
+        [role="radiogroup"] label:nth-of-type(3)::before {{
             content: "" !important;
             position: absolute !important;
             left: 16px !important;
