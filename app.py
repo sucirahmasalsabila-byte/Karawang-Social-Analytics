@@ -3521,7 +3521,7 @@ with st.sidebar:
        
         /* Logo Instagram */
         section[data-testid="stSidebar"] .st-key-platform_filter
-        [role="radiogroup"] label:nth-child(2)::before {{
+        [role="radiogroup"] label:nth-of-type(2)::before {{
             content: "" !important;
             position: absolute !important;
             left: 16px !important;
@@ -3540,7 +3540,7 @@ with st.sidebar:
 
         /* Logo TikTok */
         section[data-testid="stSidebar"] .st-key-platform_filter
-        [role="radiogroup"] label:nth-child(3)::before {{
+        [[role="radiogroup"] label:nth-of-type(3)::before {{
             content: "" !important;
             position: absolute !important;
             left: 16px !important;
@@ -3556,7 +3556,6 @@ with st.sidebar:
             font-size: 0 !important;
             z-index: 999 !important;
         }}
-
 
         </style>
         """,
