@@ -166,9 +166,6 @@ logo_tiktok = get_image_base64(
     "assets/logo_tiktok.png"
 )
 
-st.write("Instagram Base64:", len(logo_instagram))
-st.write("TikTok Base64:", len(logo_tiktok))
-
 # =========================================================
 # AUTH LOGIN DATABASE
 # =========================================================
